@@ -10,7 +10,7 @@ public class FabricaConexao {
     private static final String USER = "postgres";
     private static final String PASS = "admin";
 
-    public static Connection obterConexao() {
+    public static Connection obterConexao() throws Exception {
         Connection conexao = null;
 
         try {
@@ -18,9 +18,9 @@ public class FabricaConexao {
             conexao = DriverManager.getConnection(URL, USER, PASS);
 
         } catch (ClassNotFoundException cnf) {
-            System.out.println("Driver nao encontrado" + cnf);
+            throw new Exception ("Driver nao encontrado " + cnf);
         } catch (SQLException sqlException) {
-            System.out.println("Conexao nao estabelecida" + sqlException);
+            throw new Exception ("Conexao nao estabelecida " + sqlException);
         }
 
         return conexao;
