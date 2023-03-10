@@ -77,7 +77,7 @@ public class CursoNegocio {
         ResultSet resultado = null;
 
         try {
-            this.comandoSelecaoNome.setString(1, "'%" + nome.toUpperCase() + "%'");
+            this.comandoSelecaoNome.setString(1, "%" + nome.toUpperCase() + "%");
             resultado = this.comandoSelecaoNome.executeQuery();
         } catch (SQLException sqlException) {
             throw new Exception("Erro ao buscar por nome" + sqlException.getMessage());
