@@ -20,7 +20,7 @@ public class CursoNegocio {
         try {
             this.conexao = FabricaConexao.obterConexao();
             this.comandoInclusao = conexao.prepareStatement("INSERT INTO curso (nome, cargahoraria, numsemestre) VALUES (?, ?, ?)");
-            this.comandoAlteracao = conexao.prepareStatement("UPDATE curso SET nome=?, cargahoraria=?, numsemestre=?, codigo=?");
+            this.comandoAlteracao = conexao.prepareStatement("UPDATE curso SET nome=?, cargahoraria=?, numsemestre=? WHERE codigo=?");
             this.comandoExclusao = conexao.prepareStatement("DELETE FROM curso WHERE codigo=?");
             this.comandoSelecaoCodigo = conexao.prepareStatement("SELECT * FROM curso WHERE codigo=?");
             this.comandoSelecaoNome = conexao.prepareStatement("SELECT * FROM curso WHERE upper(nome) LIKE ?");
