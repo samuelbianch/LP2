@@ -41,7 +41,7 @@ public class Incluir04 {
             comando.setFloat(4, promocao);
             comando.setFloat(5, margem);
             comando.setInt(6, listaGrupos.get(nomeGrupo));
-            comando.executeUpdate();
+            comando.executeUpdate ();
             System.out.println("Inclusao do produto realizada com sucesso");
         } catch (Exception exception) {
             System.out.println("Erro ao incluir produto: " + exception.getMessage());
