@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import negocio.CursoNegocio;
 import negocio.NegocioException;
+import vo.CursoVO;
 
 public class App 
 {
@@ -61,6 +62,17 @@ public class App
         try {
             String nome = JOptionPane.showInputDialog("Forneca o nome do curso");
             int cargahoraria = Integer.parseInt(JOptionPane.showInputDialog("Forneca a carga horaria"));
+            int numsemestre = Integer.parseInt(JOptionPane.showInputDialog("Forneca o numero de semestres"));
+            CursoVO cursoVO = new CursoVO();
+
+            cursoVO.setNome(nome);
+            cursoVO.setCargahoraria(cargahoraria);
+            cursoVO.setNumsemestre(numsemestre);
+            cursoNegocio.incluir(cursoVO);
+
+            JOptionPane.showMessageDialog(null, "Incluido com sucesso");
+        } catch (Exception negocioException) {
+            System.out.println("Erro ao inserir curso" + negocioException.getMessage());
         }
     }
 }
