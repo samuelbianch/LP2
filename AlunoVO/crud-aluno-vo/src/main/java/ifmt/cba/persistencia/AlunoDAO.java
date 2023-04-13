@@ -21,7 +21,7 @@ public class AlunoDAO extends DAO {
 
         try {
             comandoIncluir = conexao.getConexao().prepareStatement("INSERT INTO aluno (nome, nomemae, nomepai, sexo, " + "logradouro, numero, bairro, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            comandoAlterar = conexao.getConexao().prepareStatement("UPDATE aluno SET nome=?, nomepai=?, nomemae=?, sexo=?, " + "logradouro=?, numero=?, bairro=?, cidade=?, uf=?. WHERE matricula=?");
+            comandoAlterar = conexao.getConexao().prepareStatement("UPDATE aluno SET nome=?, nomepai=?, nomemae=?, sexo=?, " + "logradouro=?, numero=?, bairro=?, cidade=?, uf=? WHERE matricula=?");
             comandoExcluir = conexao.getConexao().prepareStatement("DELETE FROM aluno WHERE matricula=?");
             comandoBuscaMatricula = conexao.getConexao().prepareStatement("SELECT * FROM aluno WHERE matricula=?");
         } catch (SQLException exception) {
@@ -104,7 +104,7 @@ public class AlunoDAO extends DAO {
         List<AlunoVO> listaAluno = new ArrayList<>();
         AlunoVO aluno = null;
 
-        String comandoSQL = "SELECT * FROM aluno WHERE UPPER(nome) LIKE '" + nome.trim().toUpperCase() + "%' ORDER BY NOME LIMIT 10";
+        String comandoSQL = "SELECT * FROM aluno WHERE UPPER(nome) LIKE '%" + nome.trim().toUpperCase() + "%' ORDER BY NOME LIMIT 10";
 
         try {
             PreparedStatement comando = conexao.getConexao().prepareStatement(comandoSQL);
@@ -126,9 +126,9 @@ public class AlunoDAO extends DAO {
         if (resultado != null) {
             try {
                 aluno.setMatricula(resultado.getInt("matricula"));
-                aluno.setNome("nome");
-                aluno.setNomeMae("nomemae");
-                aluno.setNomePai("nomepai");
+                aluno.setNome(resultado.getString("nome"));
+                aluno.setNomeMae(resultado.getString("nomemae"));
+                aluno.setNomePai(resultado.getString("nomepai"));
                 aluno.setSexo(EnumSexo.values()[resultado.getInt("sexo")]);
                 aluno.getEndereco().setLogradouro(resultado.getString("logradouro"));
                 aluno.getEndereco().setNumero(resultado.getInt("numero"));

@@ -73,7 +73,7 @@ public class Main {
         AlunoVO alunoVO = alunoNegocio.pesquisaPorMatricula(matricula);
 
         if (alunoVO != null) {
-            AlunoVO alunoTemp = lerDados();
+            AlunoVO alunoTemp = lerDados(alunoVO);
             alunoNegocio.alterar(alunoTemp);
         } else {
             JOptionPane.showMessageDialog(null , "ERRO: Aluno nao encontrado");
@@ -130,7 +130,7 @@ public class Main {
             System.out.println("Nome: ............" + alunoVO.getNome());
             System.out.println("Nome da mae: ....." + alunoVO.getNomeMae());
             System.out.println("Nome do pai: ....." + alunoVO.getNomePai());
-            System.out.println("Sexo: " + alunoVO.getSexo());
+            System.out.println("Sexo: ............" + alunoVO.getSexo());
             if (alunoVO.getEndereco() != null) {
                 System.out.println("Logradouro: ......" + alunoVO.getEndereco().getLogradouro());
                 System.out.println("Numero: .........." + alunoVO.getEndereco().getNumero());
