@@ -11,9 +11,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="grupoproduto")
 public class GrupoProdutoVO implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-
     private int codigo;
     private String nome;
     private float margemLucro;
