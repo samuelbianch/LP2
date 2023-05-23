@@ -2,6 +2,8 @@ package ifmt.cba.vo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,7 +12,7 @@ import jakarta.persistence.Table;
 public class GrupoProdutoVO {
 
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
 
     @Column(nullable = false, length = 50)
@@ -19,8 +21,7 @@ public class GrupoProdutoVO {
     public GrupoProdutoVO() {
     }
 
-    public GrupoProdutoVO(int codigo, String nome) {
-        this.codigo = codigo;
+    public GrupoProdutoVO(String nome) {
         this.nome = nome;
     }
 

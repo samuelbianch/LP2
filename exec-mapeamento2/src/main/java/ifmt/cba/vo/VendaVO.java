@@ -2,12 +2,14 @@ package ifmt.cba.vo;
 
 import java.util.Calendar;
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public class VendaVO {
 
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
 
     @Column(nullable = false)

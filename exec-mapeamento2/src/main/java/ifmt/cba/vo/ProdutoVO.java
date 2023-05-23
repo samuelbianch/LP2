@@ -1,18 +1,26 @@
 package ifmt.cba.vo;
 
+import java.io.Serializable;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "produto")
-public class ProdutoVO {
+public class ProdutoVO implements Serializable {
 
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
 
     @Column(nullable = false, length = 50)
@@ -21,17 +29,29 @@ public class ProdutoVO {
     @Column(nullable = false, name = "precovenda")
     private float precoVenda;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private GrupoProdutoVO codiGrupoProdutoVO;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "grupoproduto")
+    private GrupoProdutoVO grupoProdutoVO;
+
+    @ManyToMany
+    @JoinTable(name = "fornecedor")
+    private List<FornecedorVO> fornecedorVO;
+
+    public List<FornecedorVO> getPessoaJuridicaVO() {
+        return fornecedorVO;
+    }
+
+    public void setPessoaJuridicaVO(List<FornecedorVO> fornecedorVO) {
+        this.fornecedorVO = fornecedorVO;
+    }
 
     public ProdutoVO() {
     }
 
-    public ProdutoVO(int codigo, String nome, float precoVenda, GrupoProdutoVO codiGrupoProdutoVO) {
-        this.codigo = codigo;
+    public ProdutoVO(String nome, float precoVenda, GrupoProdutoVO grupoProdutoVO) {
         this.nome = nome;
         this.precoVenda = precoVenda;
-        this.codiGrupoProdutoVO = codiGrupoProdutoVO;
+        this.grupoProdutoVO = grupoProdutoVO;
     }
 
     public int getCodigo() {
@@ -58,12 +78,11 @@ public class ProdutoVO {
         this.precoVenda = precoVenda;
     }
 
-    public GrupoProdutoVO getCodiGrupoProdutoVO() {
-        return codiGrupoProdutoVO;
+    public GrupoProdutoVO getGrupoProdutoVO() {
+        return grupoProdutoVO;
     }
 
-    public void setCodiGrupoProdutoVO(GrupoProdutoVO codiGrupoProdutoVO) {
-        this.codiGrupoProdutoVO = codiGrupoProdutoVO;
+    public void setGrupoProdutoVO(GrupoProdutoVO grupoProdutoVO) {
+        this.grupoProdutoVO = grupoProdutoVO;
     }
-
 }

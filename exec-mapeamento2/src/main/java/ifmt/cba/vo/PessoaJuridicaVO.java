@@ -40,4 +40,5 @@ public class PessoaJuridicaVO extends PessoaVO {
     public void setNomeFantasia(String nomeFantasia) {
         this.setNome(nomeFantasia);
     }
+
 }
