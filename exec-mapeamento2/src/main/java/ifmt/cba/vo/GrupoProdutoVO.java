@@ -16,6 +16,14 @@ public class GrupoProdutoVO {
     @Column(nullable = false, length = 50)
     private String nome;
 
+    public GrupoProdutoVO() {
+    }
+
+    public GrupoProdutoVO(int codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+
     public int getCodigo() {
         return codigo;
     }

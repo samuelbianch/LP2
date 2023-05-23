@@ -29,6 +29,19 @@ public class ItemVendaVO {
     @OneToMany
     private ProdutoVO produto;
 
+    public ItemVendaVO() {
+    }
+
+    public ItemVendaVO(int codigo, int quantidade, int precoVenda, float perDesconto, VendaVO venda,
+            ProdutoVO produto) {
+        this.codigo = codigo;
+        this.quantidade = quantidade;
+        this.precoVenda = precoVenda;
+        this.perDesconto = perDesconto;
+        this.venda = venda;
+        this.produto = produto;
+    }
+
     public int getCodigo() {
         return codigo;
     }

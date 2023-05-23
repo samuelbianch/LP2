@@ -22,6 +22,14 @@ public abstract class PessoaVO implements Serializable {
     @Column(nullable = false, length = 100)
     private String nome;
 
+    public PessoaVO() {
+    }
+
+    public PessoaVO(int codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+
     public int getCodigo() {
         return codigo;
     }

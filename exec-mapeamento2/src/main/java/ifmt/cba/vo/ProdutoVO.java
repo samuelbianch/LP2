@@ -24,6 +24,16 @@ public class ProdutoVO {
     @OneToMany(fetch = FetchType.EAGER)
     private GrupoProdutoVO codiGrupoProdutoVO;
 
+    public ProdutoVO() {
+    }
+
+    public ProdutoVO(int codigo, String nome, float precoVenda, GrupoProdutoVO codiGrupoProdutoVO) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.precoVenda = precoVenda;
+        this.codiGrupoProdutoVO = codiGrupoProdutoVO;
+    }
+
     public int getCodigo() {
         return codigo;
     }

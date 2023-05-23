@@ -13,6 +13,14 @@ public class VendaVO {
     @Column(nullable = false)
     private Calendar dataVenda;
 
+    public VendaVO() {
+    }
+
+    public VendaVO(int codigo, Calendar dataVenda) {
+        this.codigo = codigo;
+        this.dataVenda = dataVenda;
+    }
+
     public int getCodigo() {
         return codigo;
     }
