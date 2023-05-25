@@ -34,7 +34,8 @@ public class ProdutoVO implements Serializable {
     private GrupoProdutoVO grupoProdutoVO;
 
     @ManyToMany
-    @JoinTable(name = "fornecedor")
+    @JoinTable(name = "fornecedor", joinColumns = { @JoinColumn(name = "produto_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "fornecedor_id") })
     private List<FornecedorVO> fornecedorVO;
 
     public List<FornecedorVO> getPessoaJuridicaVO() {

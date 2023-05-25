@@ -22,8 +22,8 @@ public class PessoaFisicaVO extends PessoaVO {
         this.cpf = cpf;
     }
 
-    public PessoaFisicaVO(int codigo, String nome, String nome2, String cpf) {
-        super(codigo, nome);
+    public PessoaFisicaVO(String nome, String nome2, String cpf) {
+        super(nome);
         nome = nome2;
         this.cpf = cpf;
     }

@@ -1,7 +1,9 @@
 package ifmt.cba.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
@@ -10,11 +12,19 @@ import jakarta.persistence.Table;
 @Table(name = "fornecedor")
 public class FornecedorVO extends PessoaJuridicaVO {
 
-    public FornecedorVO(int codigo, String nome, String razaoSocial, String nomeFantasia) {
-        super(codigo, nome, razaoSocial, nomeFantasia);
+    public FornecedorVO(String razaoSocial, String nomeFantasia) {
+        super(razaoSocial, nomeFantasia);
     }
 
-    @ManyToMany(targetEntity = ifmt.cba.vo.ProdutoVO.class)
+    @ManyToMany(mappedBy = "fornecedorVO")
     public List<ProdutoVO> produtoVO;
+
+    public List<ProdutoVO> getProdutoVO() {
+        return produtoVO;
+    }
+
+    public void setProdutoVO(List<ProdutoVO> produtoVO) {
+        this.produtoVO = produtoVO;
+    }
 
 }

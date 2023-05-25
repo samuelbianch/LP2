@@ -15,12 +15,7 @@ public class PessoaJuridicaVO extends PessoaVO {
     private String nomeFantasia;
 
     public PessoaJuridicaVO(String razaoSocial, String nomeFantasia) {
-        this.razaoSocial = razaoSocial;
-        this.nomeFantasia = nomeFantasia;
-    }
-
-    public PessoaJuridicaVO(int codigo, String nome, String razaoSocial, String nomeFantasia) {
-        super(codigo, nome);
+        super(nomeFantasia);
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
     }

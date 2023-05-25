@@ -27,8 +27,7 @@ public abstract class PessoaVO implements Serializable {
     public PessoaVO() {
     }
 
-    public PessoaVO(int codigo, String nome) {
-        this.codigo = codigo;
+    public PessoaVO(String nome) {
         this.nome = nome;
     }
 
