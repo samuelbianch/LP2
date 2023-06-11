@@ -22,20 +22,12 @@ public class ClienteVO extends PessoaFisicaVO {
 
     }
 
-    public ClienteVO(int id, float limiteCredito) {
-        this.id = id;
+    public ClienteVO(float limiteCredito) {
         this.limiteCredito = limiteCredito;
     }
 
-    public ClienteVO(String nome, String cpf, int id, float limiteCredito) {
+    public ClienteVO(String nome, String cpf, float limiteCredito) {
         super(nome, cpf);
-        this.id = id;
-        this.limiteCredito = limiteCredito;
-    }
-
-    public ClienteVO(String nome, String nome2, String cpf, int id, float limiteCredito) {
-        super(nome, nome2, cpf);
-        this.id = id;
         this.limiteCredito = limiteCredito;
     }
 

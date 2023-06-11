@@ -33,7 +33,7 @@ public class ProdutoVO implements Serializable {
     @JoinColumn(name = "grupoproduto")
     private GrupoProdutoVO grupoProdutoVO;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "fornecedor", joinColumns = { @JoinColumn(name = "produto_id") }, inverseJoinColumns = {
             @JoinColumn(name = "fornecedor_id") })
     private List<FornecedorVO> fornecedorVO;

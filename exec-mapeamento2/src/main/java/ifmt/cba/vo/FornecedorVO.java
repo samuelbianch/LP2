@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -16,7 +17,7 @@ public class FornecedorVO extends PessoaJuridicaVO {
         super(razaoSocial, nomeFantasia);
     }
 
-    @ManyToMany(mappedBy = "fornecedorVO")
+    @ManyToMany(mappedBy = "fornecedorVO", fetch = FetchType.EAGER)
     public List<ProdutoVO> produtoVO;
 
     public List<ProdutoVO> getProdutoVO() {
