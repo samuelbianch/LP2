@@ -8,7 +8,6 @@ import ifmt.cba.vo.ClienteVO;
 import ifmt.cba.vo.FornecedorVO;
 import ifmt.cba.vo.GrupoProdutoVO;
 import ifmt.cba.vo.ItemVendaVO;
-import ifmt.cba.vo.PessoaJuridicaVO;
 import ifmt.cba.vo.ProdutoVO;
 import ifmt.cba.vo.VendaVO;
 import ifmt.cba.vo.VendedorVO;
@@ -62,7 +61,17 @@ public class Main {
             listaproduto = query.getResultList();
             fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", listaproduto);
             entityManager.persist(fornecedor);
-            // System.out.println("Inclusao realizada de Pessoa Juridica");
+
+            // Inclusao de fornecedor com produto
+            query = entityManager.createQuery("SELECT b FROM FornecedorVO b");
+            List<FornecedorVO> listaFornecedor = query.getResultList();
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b");
+            List<ProdutoVO> listaProduto = query.getResultList();
+
+            FornecedorVO fornecedorTemp = listaFornecedor.get(0);
+            fornecedorTemp.setProdutoVO(listaProduto.subList(0, 2));
+
+            entityManager.persist(fornecedorTemp);
 
             // Incluindo cliente
             ClienteVO cliente = new ClienteVO("Samuel", "06105917112", 3000);

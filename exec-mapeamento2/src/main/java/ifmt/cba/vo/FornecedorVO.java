@@ -1,9 +1,7 @@
 package ifmt.cba.vo;
 
-import java.io.Serializable;
 import java.util.List;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
@@ -18,7 +16,7 @@ public class FornecedorVO extends PessoaJuridicaVO {
         this.produtoVO = produtoVO;
     }
 
-    @ManyToMany(mappedBy = "fornecedorVO", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     public List<ProdutoVO> produtoVO;
 
     public List<ProdutoVO> getProdutoVO() {
