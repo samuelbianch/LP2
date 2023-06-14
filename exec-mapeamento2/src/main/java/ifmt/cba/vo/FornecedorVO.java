@@ -13,8 +13,9 @@ import jakarta.persistence.Table;
 @Table(name = "fornecedor")
 public class FornecedorVO extends PessoaJuridicaVO {
 
-    public FornecedorVO(String razaoSocial, String nomeFantasia) {
+    public FornecedorVO(String razaoSocial, String nomeFantasia, List<ProdutoVO> produtoVO) {
         super(razaoSocial, nomeFantasia);
+        this.produtoVO = produtoVO;
     }
 
     @ManyToMany(mappedBy = "fornecedorVO", fetch = FetchType.EAGER)

@@ -1,12 +1,17 @@
 package ifmt.cba.vo;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "itemvenda")
@@ -25,18 +30,17 @@ public class ItemVendaVO {
     @Column(nullable = false, name = "perdesconto")
     private float perDesconto;
 
-    @OneToMany
-    private VendaVO venda;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<VendaVO> venda;
 
-    @OneToMany
+    @ManyToOne
     private ProdutoVO produto;
 
     public ItemVendaVO() {
     }
 
-    public ItemVendaVO(int codigo, int quantidade, int precoVenda, float perDesconto, VendaVO venda,
+    public ItemVendaVO(int quantidade, int precoVenda, float perDesconto, List<VendaVO> venda,
             ProdutoVO produto) {
-        this.codigo = codigo;
         this.quantidade = quantidade;
         this.precoVenda = precoVenda;
         this.perDesconto = perDesconto;
@@ -76,11 +80,11 @@ public class ItemVendaVO {
         this.perDesconto = perDesconto;
     }
 
-    public VendaVO getVenda() {
+    public List<VendaVO> getVenda() {
         return venda;
     }
 
-    public void setVenda(VendaVO venda) {
+    public void setVenda(List<VendaVO> venda) {
         this.venda = venda;
     }
 

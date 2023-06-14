@@ -1,10 +1,17 @@
 package ifmt.cba.apps;
 
+import java.util.Calendar;
+import java.util.List;
+
 import ifmt.cba.persistencia.EntityManagerUtil;
 import ifmt.cba.vo.ClienteVO;
+import ifmt.cba.vo.FornecedorVO;
 import ifmt.cba.vo.GrupoProdutoVO;
+import ifmt.cba.vo.ItemVendaVO;
 import ifmt.cba.vo.PessoaJuridicaVO;
 import ifmt.cba.vo.ProdutoVO;
+import ifmt.cba.vo.VendaVO;
+import ifmt.cba.vo.VendedorVO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -40,15 +47,21 @@ public class Main {
             produto = new ProdutoVO("Sofa-cama", 700, grupoProduto);
             entityManager.persist(produto);
 
-            // Incluindo pessoa Juridica (Fornecedor)
-            PessoaJuridicaVO juridica = new PessoaJuridicaVO("Casas Bahia LTDA", "Casas Bahia");
-            entityManager.persist(juridica);
+            // Incluindo Fornecedor
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 1 AND b.codigo = 2");
+            List<ProdutoVO> listaproduto = query.getResultList();
+            FornecedorVO fornecedor = new FornecedorVO("Casas Bahia LTDA", "Casas Bahia", listaproduto);
+            entityManager.persist(fornecedor);
 
-            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas");
-            entityManager.persist(juridica);
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 2");
+            listaproduto = query.getResultList();
+            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", listaproduto);
+            entityManager.persist(fornecedor);
 
-            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas");
-            entityManager.persist(juridica);
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 1 AND b.codigo = 3");
+            listaproduto = query.getResultList();
+            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", listaproduto);
+            entityManager.persist(fornecedor);
             // System.out.println("Inclusao realizada de Pessoa Juridica");
 
             // Incluindo cliente
@@ -60,6 +73,64 @@ public class Main {
 
             cliente = new ClienteVO("Ana", "45612378945", 5000);
             entityManager.persist(cliente);
+
+            // Cadastrando vendedor
+            VendedorVO vendedor = new VendedorVO("Fulano", "12345678987", 5);
+            entityManager.persist(vendedor);
+
+            vendedor = new VendedorVO("Ciclano", "55445522123", 8);
+            entityManager.persist(vendedor);
+
+            vendedor = new VendedorVO("Beltrano", "44771122336", 2);
+            entityManager.persist(vendedor);
+
+            // Cadastra uma venda
+            query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 7");
+            vendedor = (VendedorVO) query.getSingleResult();
+            VendaVO venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            entityManager.persist(venda);
+
+            query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 8");
+            vendedor = (VendedorVO) query.getSingleResult();
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            entityManager.persist(venda);
+
+            query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 9");
+            vendedor = (VendedorVO) query.getSingleResult();
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            entityManager.persist(venda);
+
+            query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 7");
+            vendedor = (VendedorVO) query.getSingleResult();
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            entityManager.persist(venda);
+
+            query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 8");
+            vendedor = (VendedorVO) query.getSingleResult();
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            entityManager.persist(venda);
+
+            // Cadastrando um item de venda
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 1");
+            ProdutoVO produtoVO = (ProdutoVO) query.getSingleResult();
+            query = entityManager.createQuery("SELECT b FROM VendaVO b WHERE b.codigo = 1");
+            List<VendaVO> vendaVO = query.getResultList();
+            ItemVendaVO itemVenda = new ItemVendaVO(1, 50, 10, vendaVO, produtoVO);
+            entityManager.persist(itemVenda);
+
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 2");
+            produtoVO = (ProdutoVO) query.getSingleResult();
+            query = entityManager.createQuery("SELECT b FROM VendaVO b WHERE b.codigo = 2");
+            vendaVO = query.getResultList();
+            itemVenda = new ItemVendaVO(3, 500, 0, vendaVO, produtoVO);
+            entityManager.persist(itemVenda);
+
+            query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 3");
+            produtoVO = (ProdutoVO) query.getSingleResult();
+            query = entityManager.createQuery("SELECT b FROM VendaVO b WHERE b.codigo = 3");
+            vendaVO = query.getResultList();
+            itemVenda = new ItemVendaVO(9, 254, 15, vendaVO, produtoVO);
+            entityManager.persist(itemVenda);
 
             entityManager.getTransaction().commit();
             System.out.println("Inclusao realizada com sucesso!");

@@ -13,9 +13,9 @@
         <class>ifmt.cba.vo.ClienteVO</class>
         <class>ifmt.cba.vo.PessoaJuridicaVO</class>
         <class>ifmt.cba.vo.PessoaVO</class>
-        <!--<class>ifmt.cba.vo.VendaVO</class>
+        <class>ifmt.cba.vo.VendaVO</class>
         <class>ifmt.cba.vo.ItemVendaVO</class>
-        <class>ifmt.cba.vo.VendedorVO</class>-->
+        <class>ifmt.cba.vo.VendedorVO</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/vendas2"/>
