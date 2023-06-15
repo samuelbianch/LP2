@@ -25,8 +25,8 @@
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
 <!--  none / create / create-drop / update  -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.show_sql" value="true"/> <!--  Show SQL in console  -->
-            <property name="hibernate.format_sql" value="true"/> <!--  Show SQL formatted  -->
+            <property name="hibernate.show_sql" value="false"/> <!--  Show SQL in console  -->
+            <property name="hibernate.format_sql" value="false"/> <!--  Show SQL formatted  -->
         </properties>
     </persistence-unit>
 </persistence>

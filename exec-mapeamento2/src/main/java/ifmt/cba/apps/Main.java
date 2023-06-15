@@ -49,17 +49,18 @@ public class Main {
             // Incluindo Fornecedor
             query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 1 AND b.codigo = 2");
             List<ProdutoVO> listaproduto = query.getResultList();
-            FornecedorVO fornecedor = new FornecedorVO("Casas Bahia LTDA", "Casas Bahia", listaproduto);
+            FornecedorVO fornecedor = new FornecedorVO("Casas Bahia LTDA", "Casas Bahia", "11059961000198",
+                    listaproduto);
             entityManager.persist(fornecedor);
 
             query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 2");
             listaproduto = query.getResultList();
-            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", listaproduto);
+            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", "62104703000117", listaproduto);
             entityManager.persist(fornecedor);
 
             query = entityManager.createQuery("SELECT b FROM ProdutoVO b WHERE b.codigo = 1 AND b.codigo = 3");
             listaproduto = query.getResultList();
-            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", listaproduto);
+            fornecedor = new FornecedorVO("Lojas Americanas LTDA", "Lojas Americanas", "70723314000106", listaproduto);
             entityManager.persist(fornecedor);
 
             // Inclusao de fornecedor com produto
@@ -74,49 +75,51 @@ public class Main {
             entityManager.persist(fornecedorTemp);
 
             // Incluindo cliente
-            ClienteVO cliente = new ClienteVO("Samuel", "06105917112", 3000);
+            ClienteVO cliente = new ClienteVO("Samuel", "06105917112", "114477885", 3000);
             entityManager.persist(cliente);
 
-            cliente = new ClienteVO("Paulo", "06158753154", 9000);
+            cliente = new ClienteVO("Paulo", "06158753154", "445566332", 9000);
             entityManager.persist(cliente);
 
-            cliente = new ClienteVO("Ana", "45612378945", 5000);
+            cliente = new ClienteVO("Ana", "45612378945", "789456111", 5000);
             entityManager.persist(cliente);
 
             // Cadastrando vendedor
-            VendedorVO vendedor = new VendedorVO("Fulano", "12345678987", 5);
+            VendedorVO vendedor = new VendedorVO("Fulano", "12345678987", "123456789", 5);
             entityManager.persist(vendedor);
 
-            vendedor = new VendedorVO("Ciclano", "55445522123", 8);
+            vendedor = new VendedorVO("Ciclano", "55445522123", "112233445", 8);
             entityManager.persist(vendedor);
 
-            vendedor = new VendedorVO("Beltrano", "44771122336", 2);
+            vendedor = new VendedorVO("Beltrano", "44771122336", "784411546", 2);
             entityManager.persist(vendedor);
 
             // Cadastra uma venda
             query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 7");
             vendedor = (VendedorVO) query.getSingleResult();
-            VendaVO venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            VendaVO venda = new VendaVO(Calendar.getInstance().getTime(), vendedor, cliente);
             entityManager.persist(venda);
 
             query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 8");
             vendedor = (VendedorVO) query.getSingleResult();
-            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor, cliente);
             entityManager.persist(venda);
 
             query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 9");
             vendedor = (VendedorVO) query.getSingleResult();
-            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            query = entityManager.createQuery("SELECT b FROM ClienteVO b WHERE b.codigo = 4");
+            cliente = (ClienteVO) query.getSingleResult();
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor, cliente);
             entityManager.persist(venda);
 
             query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 7");
             vendedor = (VendedorVO) query.getSingleResult();
-            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor, cliente);
             entityManager.persist(venda);
 
             query = entityManager.createQuery("SELECT b FROM VendedorVO b WHERE b.codigo = 8");
             vendedor = (VendedorVO) query.getSingleResult();
-            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor);
+            venda = new VendaVO(Calendar.getInstance().getTime(), vendedor, cliente);
             entityManager.persist(venda);
 
             // Cadastrando um item de venda

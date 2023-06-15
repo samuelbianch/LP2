@@ -1,5 +1,7 @@
 package ifmt.cba.vo;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,8 +16,8 @@ public class VendedorVO extends PessoaFisicaVO {
     public VendedorVO() {
     }
 
-    public VendedorVO(String nome, String cpf, float perComissao) {
-        super(nome, cpf);
+    public VendedorVO(String nome, String cpf, String rg, float perComissao) {
+        super(nome, cpf, rg);
         this.perComissao = perComissao;
     }
 

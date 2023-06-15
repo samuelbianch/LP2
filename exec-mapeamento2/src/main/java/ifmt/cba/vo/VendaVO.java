@@ -18,8 +18,11 @@ public class VendaVO {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
 
-    @Column(nullable = false)
+    @Column(name = "datavenda", nullable = false)
     private Date dataVenda;
+
+    @ManyToOne
+    private ClienteVO clienteVO;
 
     @ManyToOne
     private VendedorVO vendedor;
@@ -27,9 +30,10 @@ public class VendaVO {
     public VendaVO() {
     }
 
-    public VendaVO(Date dataVenda, VendedorVO vendedor) {
+    public VendaVO(Date dataVenda, VendedorVO vendedor, ClienteVO cliente) {
         this.dataVenda = dataVenda;
         this.vendedor = vendedor;
+        this.clienteVO = cliente;
     }
 
     public int getCodigo() {
@@ -54,5 +58,13 @@ public class VendaVO {
 
     public void setVendedor(VendedorVO vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public ClienteVO getClienteVO() {
+        return clienteVO;
+    }
+
+    public void setClienteVO(ClienteVO clienteVO) {
+        this.clienteVO = clienteVO;
     }
 }

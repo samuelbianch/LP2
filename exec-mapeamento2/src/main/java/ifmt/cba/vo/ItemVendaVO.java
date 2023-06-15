@@ -30,7 +30,7 @@ public class ItemVendaVO {
     @Column(nullable = false, name = "perdesconto")
     private float perDesconto;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<VendaVO> venda;
 
     @ManyToOne

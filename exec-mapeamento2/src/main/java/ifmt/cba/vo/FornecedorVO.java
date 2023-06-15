@@ -11,8 +11,12 @@ import jakarta.persistence.Table;
 @Table(name = "fornecedor")
 public class FornecedorVO extends PessoaJuridicaVO {
 
-    public FornecedorVO(String razaoSocial, String nomeFantasia, List<ProdutoVO> produtoVO) {
-        super(razaoSocial, nomeFantasia);
+    public FornecedorVO() {
+        super(null, null, null);
+    }
+
+    public FornecedorVO(String razaoSocial, String nomeFantasia, String cnpj, List<ProdutoVO> produtoVO) {
+        super(razaoSocial, nomeFantasia, cnpj);
         this.produtoVO = produtoVO;
     }
 

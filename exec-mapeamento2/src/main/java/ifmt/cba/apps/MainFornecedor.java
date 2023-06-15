@@ -10,13 +10,13 @@ public class MainFornecedor {
             EntityManager entityManager = EntityManagerUtil.getEntityManager();
             entityManager.getTransaction().begin();
 
-            PessoaJuridicaVO juridica = new PessoaJuridicaVO("Casas Bahia LTDA", "Casas Bahia");
+            PessoaJuridicaVO juridica = new PessoaJuridicaVO("Casas Bahia LTDA", "Casas Bahia", "11059961000198");
             entityManager.persist(juridica);
 
-            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas");
+            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas", "62104703000117");
             entityManager.persist(juridica);
 
-            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas");
+            juridica = new PessoaJuridicaVO("Lojas Americanas LTDA", "Lojas Americanas", "70723314000106");
             entityManager.persist(juridica);
 
             entityManager.getTransaction().commit();
